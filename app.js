@@ -20,4 +20,4 @@ app.use((req, res, next) => {   // ini utk handle status url not found
         message: 'Resource ' + req.originalUrl + ' Not Found'
     })
 })
-app.listen(3001, () => console.log('Server: http://localhost:3001')); //ini utk jalankan node js
+app.listen(3000, () => console.log('Server: http://localhost:3000')); //ini utk jalankan node js
