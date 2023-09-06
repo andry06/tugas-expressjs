@@ -75,9 +75,9 @@ const update = async (req, res) => {
     const image = req.file;
     let exec = {};
     if(image){
-        exec = { user_id: user_id, name:name, price:price, stock: stock, status: status, image_url: `http://localhost:3001/public/${image.originalname}`};
         const target = path.join(__dirname, '../../uploads', image.originalname);
         fs.renameSync(image.path, target);
+        exec = { user_id: user_id, name:name, price:price, stock: stock, status: status, image_url: `http://localhost:3001/public/${image.originalname}`};
     }else{
         exec = { user_id: user_id, name:name, price:price, stock: stock, status: status};
     }
