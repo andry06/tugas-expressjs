@@ -3,7 +3,8 @@ const path = require('path');
 const fs = require('fs');
 
 const index = (req, res) => {
-    Product.find()
+    const { search } = req.query;
+    Product.find({name: new RegExp(search, 'i') })
         .then(result => res.send(result))
         .catch(error => res.send(error));
 }
@@ -23,6 +24,10 @@ const store = (req, res) => {
         const target = path.join(__dirname, '../../uploads', image.originalname);
         fs.renameSync(image.path, target);
         Product.create({ name, price, stock, status, image_url: `http://localhost:3001/public/${image.originalname}` })
+        .then(result => res.send(result))
+        .catch(error => res.send(error));
+    }else{
+        Product.create({ name, price, stock, status })
         .then(result => res.send(result))
         .catch(error => res.send(error));
     }

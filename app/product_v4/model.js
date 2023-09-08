@@ -13,7 +13,11 @@ const productSchema = mongoose.Schema({
         min: 1000,
         max: 100000000
     },
-    stok: Number,
+    stock: {
+        type: Number,
+        required: true,
+        min: 0
+    },
     status: {
         type: Boolean,
         default: true
